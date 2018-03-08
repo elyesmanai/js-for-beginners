@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h1{font-size:200px;}
+	</style>
+</head>
+<body>
+	
+	<audio id="song" src="res/song.mp3"></audio>
+	<center>
+		<h1 id="score">0</h1>
+		<button onclick="reset()">reset</button>
+
+	</center>
+	
+
+
+</body>
+
+<script>
+
+	var colors = ['red','skyblue','green','beige','black','grey','white'];
+	var position = 0;
+	var song = document.getElementById("song");
+	var score = document.getElementById("score");
+	var presses =0;
+
+	document.onkeydown=function(e){
+
+		presses++;
+		score.innerHTML=presses;
+
+
+		if(position>colors.length){position=0;}
+		document.body.style.backgroundColor = colors[position];
+		position++;
+
+
+		if(song.paused){ song.play(); }
+
+
+
+	}
+
+
+	setInterval(pause,1000);
+
+
+	function pause(){ song.pause(); }
+
+	function reset(){ 
+		score.innerHTML=0;
+		song.currentTime = 0; }
+</script>
+
+
+
+</html>
+
+
+
